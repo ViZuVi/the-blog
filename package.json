@@ -1,0 +1,14 @@
+{
+  "name": "the-blog",
+  "version": "1.0.0",
+  "author": "<zukrab29@gmail.com>",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "start": "nuxt start"
+  },
+  "dependencies": {
+    "nuxt": "^2.15.7"
+  }
+}
