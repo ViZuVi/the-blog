@@ -1,12 +1,12 @@
 <template>
-  <header class="layout__header">
-    <nav>
-      <ul>
-        <li>
-          <a href="">Home</a>
+  <header class="layout__header header">
+    <nav class="header__nav">
+      <ul class="header__list">
+        <li class="header__item">
+          <a class="header__link" href="">Home</a>
         </li>
-        <li>
-          <a href="">Favourites</a>
+        <li class="header__item">
+          <a class="header__link" href="">Favourites</a>
         </li>
       </ul>
     </nav>
@@ -25,5 +25,18 @@ export default {
   background-color: #1995ad;
   color: #ffffff;
   margin-bottom: auto;
+}
+.header__list {
+  /* TODO: add mixin */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header__link {
+  color: inherit;
+  text-decoration: none;
 }
 </style>

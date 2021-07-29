@@ -1,0 +1,26 @@
+html {
+  box-sizing: border-box;
+  --antd-wave-shadow-color: $main-red;
+  height: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  // font-family: "HelveticaNeue", "Arial", sans-serif;
+  font-weight: 400;
+  color: #000000;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  height: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

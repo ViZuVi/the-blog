@@ -1,3 +1,6 @@
 module.exports = {
-  mode: "universal"
+  mode: "universal",
+  css: [
+    // "~/assets/styles/common.scss"
+  ]
 }
