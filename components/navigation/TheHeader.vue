@@ -3,10 +3,10 @@
     <nav class="header__nav">
       <ul class="header__list">
         <li class="header__item">
-          <a class="header__link" href="">Home</a>
+          <NuxtLink class="header__link" to="/">Home</NuxtLink>
         </li>
         <li class="header__item">
-          <a class="header__link" href="">Favourites</a>
+          <NuxtLink class="header__link" to="/users">Favourites</NuxtLink>
         </li>
       </ul>
     </nav>
@@ -21,7 +21,7 @@ export default {
 
 <style scoped>
 .layout__header {
-  padding: 20px;
+  padding: 0 20px;
   background-color: #1995ad;
   color: #ffffff;
   margin-bottom: auto;
@@ -34,9 +34,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: fit-content;
 }
 .header__link {
   color: inherit;
   text-decoration: none;
+}
+.header__item {
+  padding: 24px 40px;
 }
 </style>

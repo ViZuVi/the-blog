@@ -1,6 +1,7 @@
 module.exports = {
   mode: "universal",
   css: [
-    // "~/assets/styles/common.scss"
+    "~/assets/css/common.scss",
+    "~/assets/css/nuxt.scss"
   ]
 }

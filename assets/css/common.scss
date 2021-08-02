@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   --antd-wave-shadow-color: $main-red;
-  height: auto;
+  height: 100%;
 }
 
 *,
@@ -17,7 +17,7 @@ body {
   font-style: normal;
   margin: 0;
   padding: 0;
-  height: auto;
+  height: 100%;
 }
 
 img {
