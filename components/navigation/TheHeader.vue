@@ -6,7 +6,10 @@
           <NuxtLink class="header__link" to="/">Home</NuxtLink>
         </li>
         <li class="header__item">
-          <NuxtLink class="header__link" to="/users">Favourites</NuxtLink>
+          <NuxtLink class="header__link" to="/posts">My posts</NuxtLink>
+        </li>
+        <li class="header__item">
+          <NuxtLink class="header__link" to="/login">Login</NuxtLink>
         </li>
       </ul>
     </nav>

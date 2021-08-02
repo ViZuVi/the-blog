@@ -1,16 +1,19 @@
 <template>
-  <main class="layout__main">
-    <h1>We are the champions, my freind</h1>
-    <!-- <button @click="handleClick">test</button> -->
+  <main class="layout__main posts">
+    <h1>Top rated posts</h1>
+    <PostList />
   </main>
 </template>
 
 <script>
+import PostList from "~/components/posts/PostList.vue";
+import { mapState } from "vuex";
+
 export default {
-  methods: {
-    handleClick() {
-      console.log(this.$router)
-    }
+  components: {
+    PostList,
+  },
+  created() {
   }
 };
 </script>
