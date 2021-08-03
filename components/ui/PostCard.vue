@@ -1,14 +1,15 @@
 <template>
   <li class="post-card">
-    <!-- <h3 class="post-card__title">{{ post.title }}</h3>
-    <div class="post-card__img">
-      <img :src="post.img" alt="Post image">
-      <p>
-        <span>{{ post.author.name }}</span>
-        <span>{{ post.rating }}</span>
-      </p>
-    </div>
-    <p class="post-card__text">{{ post.text }}</p> -->
+    <!-- <NuxtLink :to="`/posts/${post.id}`"> -->
+      <!-- <h3 class="post-card__title">{{ post.title }}</h3> -->
+      <!-- <div class="post-card__img">
+        <img :src="post.img" alt="Post image">
+        <p>
+          <span>{{ post.author.name }}</span>
+          <span>{{ post.rating }}</span>
+        </p>
+      </div>-->
+    <!-- </NuxtLink> -->
   </li>
 </template>
 

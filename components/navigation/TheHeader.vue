@@ -27,7 +27,6 @@ export default {
   padding: 0 20px;
   background-color: #1995ad;
   color: #ffffff;
-  margin-bottom: auto;
 }
 .header__list {
   /* TODO: add mixin */
@@ -42,8 +41,12 @@ export default {
 .header__link {
   color: inherit;
   text-decoration: none;
-}
-.header__item {
+  font-family: inherit;
   padding: 24px 40px;
+  height: 100%;
+}
+.nuxt-link-active,
+.header__link:hover {
+  background-color: #a1d6e2;
 }
 </style>

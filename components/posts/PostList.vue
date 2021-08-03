@@ -1,6 +1,6 @@
 <template>
   <ul class="posts__list">
-    <PostCard v-for="post in posts" :key="post.id" />
+    <PostCard v-for="post in posts" :key="post.id" :post="post" />
   </ul>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   computed: {
     ...mapState(["posts"]),
   },
-  created() {
+  beforeCreate() {
     // console.log(this.$store.state)
     // console.log(this.posts)
   },
