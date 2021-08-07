@@ -6,24 +6,40 @@
           <NuxtLink class="header__link" to="/">Home</NuxtLink>
         </li>
         <li class="header__item">
-          <NuxtLink class="header__link" to="/posts">My posts</NuxtLink>
+          <NuxtLink class="header__link" to="/about">About</NuxtLink>
         </li>
-        <li class="header__item">
+        <li v-if="isAuth" class="header__item">
+          <NuxtLink class="header__link" to="/posts/own">My posts</NuxtLink>
+        </li>
+        <li v-if="isAuth" class="header__item">
+          <NuxtLink class="header__link" to="/posts/favourites">Favourites</NuxtLink>
+        </li>
+
+        <li v-if="!isAuth" class="header__item">
           <NuxtLink class="header__link" to="/login">Login</NuxtLink>
         </li>
+
+        <li v-else class="header__item header__user">
+          <ul class="header__user-menu">
+            <li class="header__user-item">Settings</li>
+            <li class="header__user-item">Logout</li>
+          </ul>
+        </li>
+
       </ul>
     </nav>
-    <TheTagsNav />
+
+    <slot />
   </header>
 </template>
 
 <script>
-import TheTagsNav from "./TheTagsNav"
+import { mapState } from "vuex"
 export default {
   name: "TheHeader",
-  components: {
-    TheTagsNav
-  }
+  computed: {
+    ...mapState("user", ["isAuth", "user"]),
+  },
 };
 </script>
 

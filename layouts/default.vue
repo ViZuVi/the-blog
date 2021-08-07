@@ -1,18 +1,22 @@
 <template>
   <div class="layout">
-    <TheHeader />
+    <TheHeader>
+      <TheTagsNav />
+    </TheHeader>
     <Nuxt />
     <TheFooter />
   </div>
 </template>
 
 <script>
-import TheHeader from "@/components/Navigation/TheHeader";
-import TheFooter from "@/components/Navigation/TheFooter";
+import TheHeader from "@/components/navigation/TheHeader";
+import TheTagsNav from "@/components/navigation/TheTagsNav";
+import TheFooter from "@/components/navigation/TheFooter";
 
 export default {
   components: {
     TheHeader,
+    TheTagsNav,
     TheFooter,
   },
 };

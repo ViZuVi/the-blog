@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  layout: "login"
+  layout: "short"
 }
 </script>
