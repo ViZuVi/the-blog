@@ -25,8 +25,14 @@ export default {
   height: 100%;
 }
 .layout__main {
-  background-color: #f1f1f2;
-  padding: 20px;
+  background-color: #ffffff;
+  padding: 0 40px;
   flex-grow: 1;
+}
+.layout__title {
+  margin: 40px 0;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
 }
 </style>

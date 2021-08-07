@@ -13,39 +13,47 @@
         </li>
       </ul>
     </nav>
+    <TheTagsNav />
   </header>
 </template>
 
 <script>
+import TheTagsNav from "./TheTagsNav"
 export default {
   name: "TheHeader",
+  components: {
+    TheTagsNav
+  }
 };
 </script>
 
-<style scoped>
+<style>
 .layout__header {
-  padding: 0 20px;
   background-color: #1995ad;
   color: #ffffff;
 }
 .header__list {
-  /* TODO: add mixin */
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: fit-content;
+  width: 100%;
+}
+.header__item:last-child {
+  margin-left: auto;
 }
 .header__link {
+  display: inline-block;
   color: inherit;
   text-decoration: none;
   font-family: inherit;
+  font-size: 18px;
   padding: 24px 40px;
   height: 100%;
 }
-.nuxt-link-active,
+.nuxt-link-exact-active,
 .header__link:hover {
   background-color: #a1d6e2;
 }
