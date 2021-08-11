@@ -32,7 +32,6 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 1.5rem;
   grid-row-gap: 1.5em;
-  align-items: center;
   justify-items: center;
 }
 </style>

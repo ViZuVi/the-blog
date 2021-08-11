@@ -1,0 +1,36 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.form__control-wrapper {
+  margin-bottom: 24px;
+}
+
+.form__label {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.form__input {
+  display: block;
+  width: 720px;
+  height: 40px;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: 2px solid #1995ad;
+  border-radius: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &--textarea {
+    resize: none;
+    height: initial;
+  }
+}

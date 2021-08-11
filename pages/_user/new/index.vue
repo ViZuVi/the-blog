@@ -1,24 +1,35 @@
 <template>
   <main class="layout__main new-post">
     <h1 class="layout__title">New post</h1>
-    <form class="new-post__form">
-      <label>
-        Title
+    <form class="form">
+      <div class="form__control-wrapper">
+        <label class="form__label" for="post-title">Title</label>
         <input
-          class="new-post__input"
+          id="post-title"
+          class="form__input"
           type="text"
-          accept=".jpg, .jpeg, .png"
           placeholder="enter the post title"
+          maxlength="50"
         />
-      </label>
-      <label>
-        Post text
-        <textarea class="new-post__input" />
-      </label>
-      <label>
-        Post image
-        <input class="new-post__input" type="file" />
-      </label>
+      </div>
+      <div class="form__control-wrapper">
+        <label class="form__label" for="post-text">Post text</label>
+        <textarea
+          id="post-text"
+          class="form__input form__input--textarea"
+          rows="10"
+          minlength="300"
+        />
+      </div>
+      <div class="form__control-wrapper">
+        <label class="form__label" for="post-img">Post image</label>
+        <input
+          id="post-img"
+          class="form__input"
+          type="file"
+          accept=".jpg, .jpeg, .png"
+        />
+      </div>
     </form>
   </main>
 </template>
@@ -26,15 +37,3 @@
 <script>
 export default {};
 </script>
-
-<style scoped>
-.new-post__form {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: fit-content;
-}
-.new-post__input {
-  display: block;
-}
-</style>
