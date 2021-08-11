@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import PostCard from "~/components/ui/PostCard.vue";
+import PostCard from "~/components/posts/PostCard.vue";
 
 export default {
   name: "PostList",
