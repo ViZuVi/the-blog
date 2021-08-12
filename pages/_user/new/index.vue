@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     createPost() {
-      axios.post("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/post.json", this.post)
+      axios.post("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/posts.json", this.post)
         .then((res) => console.log(res))
         .catch((err) => console.error(err))
     }

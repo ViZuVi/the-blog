@@ -7,8 +7,8 @@
           <img class="post-card__img" :src="post.img" alt="Post image" />
         </div>
         <p class="post-card__text">
-          <span>Author: {{ post.author.name }}</span>
-          <span>{{ post.rating }}</span>
+          <!-- <span>Author: {{ post.author.name }}</span>
+          <span>{{ post.rating }}</span> -->
         </p>
       </div>
     </NuxtLink>
