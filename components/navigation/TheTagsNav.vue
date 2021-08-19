@@ -21,15 +21,17 @@ export default {
 <style>
 .tags-nav {
   background-color: #f1f1f2;
-  padding: 20px 40px;
+  padding: 20px 40px 12px;
   color: #1995ad;
   font-size: 12px;
 }
 .tags-nav__list {
   display: flex;
+  flex-wrap: wrap;
 }
 .tags-nav__item {
   margin-right: 8px;
+  margin-bottom: 8px;
 }
 .tags-nav__link {
   display: inline-block;

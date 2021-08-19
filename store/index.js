@@ -33,16 +33,25 @@ export const actions = {
       })
   },
   addPost({ commit }, post) {
-    const newPost = {
+    // TODO: use foemData below instead of fakes when firebase storage will be used for images
+    // let formData = new FormData();
+    // const newPost = {
+    //   ...post,
+    //   date: new Date(),
+    // }
+    // formData.append("post", newPost);
+    const fakeImg = "https://images.ctfassets.net/rporu91m20dc/3i03iFFoIHOgToEuIwXqNZ/35737828d0d6524c055b80ae9645bbaf/the-elder-scrolls-v--skyrim---special-edition-hero-img?q=70&fm=webp";
+    const fakePost = {
       ...post,
+      img: fakeImg,
       date: new Date(),
-    }
-    axios.post("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/posts.json", newPost)
-      .then((res) => commit("ADD_POST", { ...newPost, id: res.data.name }))
+    };
+    axios.post("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/posts.json", fakePost, { headers: { 'Content-Type': 'multipart/form-data' } })
+      .then((res) => commit("ADD_POST", { ...fakePost, id: res.data.name }))
       .catch((err) => console.error(err));
   }
 };
 
 export const getters = {
   loadedPosts: (state) => state.posts,
-};Í
+};

@@ -10,6 +10,7 @@ export default class BasePost {
   title = "";
   img = "";
   text = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, sequi itaque! Ducimus et magnam velit ea inventore voluptates cum nobis temporibus! Temporibus, qui nisi a earum soluta nesciunt repudiandae ullam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, sequi itaque! Ducimus et magnam velit ea inventore voluptates cum nobis temporibus! Temporibus, qui nisi a earum soluta nesciunt repudiandae ullam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, sequi itaque! Ducimus et magnam velit ea inventore voluptates cum nobis temporibus! Temporibus, qui nisi a earum soluta nesciunt repudiandae ullam!";
+  tag = "";
   comments = [
     {
       id: null,

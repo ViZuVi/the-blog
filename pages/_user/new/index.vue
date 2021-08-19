@@ -30,6 +30,8 @@
           class="form__input"
           type="file"
           accept=".jpg, .jpeg, .png"
+          ref="img"
+          @change="post.img = $refs.img.files[0]"
         />
       </div>
       <button class="form__button" type="submit">Create</button>
@@ -38,21 +40,23 @@
 </template>
 
 <script>
-import axios from "axios";
-
+import {mapActions} from "vuex"
 export default {
   data() {
     return {
       post: {
         title: "",
-        text: ""
-      }
-    }
+        text: "",
+        img: "",
+      },
+    };
   },
   methods: {
+    ...mapActions(["addPost"]),
     createPost() {
-      this.$store.dispatch("addPost", this.post).then(() => this.$router.push("/"))
-    }
-  }
+      this.addPost(this.post)
+        .then(() => this.$router.push("/"));
+    },
+  },
 };
 </script>
