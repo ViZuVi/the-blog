@@ -43,9 +43,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .layout__header {
-  background-color: #1995ad;
+  background-color: $marine;
   color: #ffffff;
 }
 .header__list {
@@ -71,6 +71,6 @@ export default {
 }
 .nuxt-link-exact-active,
 .header__link:hover {
-  background-color: #a1d6e2;
+  background-color: $blue;
 }
 </style>

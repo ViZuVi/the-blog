@@ -6,10 +6,10 @@
 export default {};
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .layout__footer {
   padding: 20px;
-  background-color: #1995ad;
+  background-color: $marine;
   color: #ffffff;
   margin-top: auto;
 }

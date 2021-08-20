@@ -18,6 +18,15 @@ module.exports = {
   },
   plugins: [],
   modules: [],
+  buildModules: [
+    '@nuxtjs/style-resources',
+  ],
+  styleResources: {
+    scss: [
+      "~assets/css/variables.scss",
+      "~assets/css/mixins.scss"
+    ],
+  },
   loading: { color: "#ffffff", height: "4px", duration: 5000 },
   transition: {
     // TODO: add transition

@@ -18,11 +18,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .tags-nav {
-  background-color: #f1f1f2;
+  background-color: $light;
   padding: 20px 40px 12px;
-  color: #1995ad;
+  color: $marine;
   font-size: 12px;
 }
 .tags-nav__list {
@@ -37,7 +37,7 @@ export default {
   display: inline-block;
   width: 100%;
   text-align: center;
-  border: 2px solid #a1d6e2;
+  border: 2px solid $blue;
   padding: 6px 12px;
   cursor: pointer;
 }

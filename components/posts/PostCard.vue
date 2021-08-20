@@ -27,10 +27,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .post-card {
   padding: 0;
-  background-color: #f1f1f2;
+  background-color: $light;
   width: 280px;
   max-height: 360px;
   margin-bottom: 24px;
