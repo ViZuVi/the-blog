@@ -1,7 +1,7 @@
 <template>
   <main class="layout__main login">
     <h1 class="layout__title">{{ modeTitle }}</h1>
-    <form class="form" @submit.prevent="signIn">
+    <form class="form" @submit.prevent="authorizeUser">
       <div class="form__control-wrapper">
         <label class="form__label" for="email">Email</label>
         <input
@@ -26,7 +26,7 @@
       <div class="login__btn-wrapper">
         <a
           class="login__link"
-          @click="mode === 'sign-in' ? (mode = 'sign-up') : (mode = 'sign-in')"
+          @click="toggleAuthMode"
           >Switch to {{ mode === "sign-in" ? "Sign up" : "Sign in" }}</a
         >
         <a class="login__link">forgot password?</a>
@@ -51,8 +51,15 @@ export default {
     },
   },
   methods: {
-    ...mapMutations("user", ["SET_USER"]),
-    ...mapActions("user", ["signIn"]),
+    ...mapMutations("user", ["SET_USER", "UPDATE_AUHT_URL"]),
+    ...mapActions("user", ["authorize"]),
+    toggleAuthMode() {
+      this.mode === 'sign-in' ? (this.mode = 'sign-up') : (this.mode = 'sign-in');
+      this.UPDATE_AUHT_URL(this.mode);
+    },
+    authorizeUser() {
+      this.authorize().then(() => this.$router.push("/"))
+    }
   },
 };
 </script>
