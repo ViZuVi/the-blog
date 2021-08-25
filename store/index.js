@@ -32,7 +32,7 @@ export const actions = {
         commit("SET_POSTS", postsArr);
       })
   },
-  addPost({ commit }, post) {
+  addPost({ commit, rootState }, post) {
     // TODO: use foemData below instead of fakes when firebase storage will be used for images
     // let formData = new FormData();
     // const newPost = {
@@ -46,7 +46,7 @@ export const actions = {
       img: fakeImg,
       date: new Date(),
     };
-    axios.post("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/posts.json", fakePost, { headers: { 'Content-Type': 'multipart/form-data' } })
+    axios.post("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/posts.json?auth=" + rootState.user.token, fakePost, { headers: { 'Content-Type': 'multipart/form-data' } })
       .then((res) => commit("ADD_POST", { ...fakePost, id: res.data.name }))
       .catch((err) => console.error(err));
   }

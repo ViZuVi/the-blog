@@ -1,7 +1,6 @@
 import axios from "axios"
 
 export const state = () => ({
-  isAuth: false,
   user: {
     id: null,
     name: "",
@@ -12,7 +11,7 @@ export const state = () => ({
     password: "",
     returnSecureToken: true,
   },
-  authUrl: "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + process.env.fbAPIKey,
+  authUrl: "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + process.env.fbAPIKey,
   token: null,
 })
 
@@ -35,5 +34,11 @@ export const actions = {
     axios.post(state.authUrl, state.authData)
       .then(res => commit("SET_TOKEN", res.data.idToken))
       .catch(err => console.error(err))
+  }
+}
+
+export const getters = {
+  isAuth: (state) => {
+    return !!state.token
   }
 }

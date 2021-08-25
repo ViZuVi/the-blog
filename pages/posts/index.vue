@@ -16,5 +16,6 @@ export default {
   computed: {
     ...mapGetters(["loadedPosts"])
   },
+  middleware: "auth",
 };
 </script>

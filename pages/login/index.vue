@@ -58,6 +58,7 @@ export default {
       this.UPDATE_AUHT_URL(this.mode);
     },
     authorizeUser() {
+      // TODO: if error when aut (for.ex sighn up with existing user data) cancel redirecting and show error
       this.authorize().then(() => this.$router.push("/"))
     }
   },

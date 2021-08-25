@@ -2,6 +2,7 @@
   <main class="layout__main posts">
     <h1 class="layout__title">What to read</h1>
     <PostList :posts="loadedPosts" />
+    <button @click="$router.push(`posts/testuser/edit`)">edit</button>
   </main>
 </template>
 
@@ -16,6 +17,5 @@ export default {
   computed: {
     ...mapGetters(["loadedPosts"])
   },
-  middleware: "test"
 };
 </script>

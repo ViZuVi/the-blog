@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import { mapState } from "vuex"
+import { mapGetters } from "vuex"
 export default {
   name: "TheHeader",
   computed: {
-    ...mapState("user", ["isAuth", "user"]),
+    ...mapGetters("user", ["isAuth", "user"]),
   },
 };
 </script>

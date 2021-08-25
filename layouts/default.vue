@@ -32,7 +32,6 @@ export default {
   background-color: #ffffff;
   padding: 0 40px 40px;
   flex-grow: 1;
-
 }
 .layout__title {
   margin: 40px 0;
