@@ -12,7 +12,9 @@
           <NuxtLink class="header__link" to="/posts/own">My posts</NuxtLink>
         </li>
         <li v-if="isAuth" class="header__item">
-          <NuxtLink class="header__link" to="/posts/favourites">Favourites</NuxtLink>
+          <NuxtLink class="header__link" to="/posts/favourites"
+            >Favourites</NuxtLink
+          >
         </li>
 
         <li v-if="!isAuth" class="header__item">
@@ -21,11 +23,15 @@
 
         <li v-else class="header__item header__user">
           <ul class="header__user-menu">
-            <li class="header__user-item">Settings</li>
-            <li class="header__user-item">Logout</li>
+            <li class="header__item header__user-item">
+              <!-- todo link should be to /{userId}/settings -->
+              <NuxtLink class="header__link" to="/settings">Settings</NuxtLink>
+            </li>
+            <li class="header__item header__user-item">
+              <a class="header__link" @click="onLogout">Logout</a>
+            </li>
           </ul>
         </li>
-
       </ul>
     </nav>
 
@@ -34,12 +40,19 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "TheHeader",
   computed: {
     ...mapGetters("user", ["isAuth", "user"]),
   },
+  methods: {
+    ...mapActions("user", ["logout"]),
+    onLogout() {
+      this.logout();
+      this.$router.push("/login")
+    }
+  }
 };
 </script>
 
@@ -72,5 +85,11 @@ export default {
 .nuxt-link-exact-active,
 .header__link:hover {
   background-color: $blue;
+}
+.header__user-menu {
+  display: flex;
+}
+.header__user-item {
+  cursor: pointer;
 }
 </style>

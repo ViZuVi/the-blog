@@ -14,6 +14,7 @@ import TheTagsNav from "@/components/navigation/TheTagsNav";
 import TheFooter from "@/components/navigation/TheFooter";
 
 export default {
+  name: "default",
   components: {
     TheHeader,
     TheTagsNav,
