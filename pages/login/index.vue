@@ -9,7 +9,7 @@
           type="email"
           name="email"
           id="email"
-          @change="SET_USER({ field: 'email', value: $event.target.value })"
+          @change="SET_AUTH_DATA({ field: 'email', value: $event.target.value })"
         />
       </div>
       <div class="form__control-wrapper">
@@ -19,7 +19,7 @@
           type="password"
           name="password"
           id="password"
-          @change="SET_USER({ field: 'password', value: $event.target.value })"
+          @change="SET_AUTH_DATA({ field: 'password', value: $event.target.value })"
         />
       </div>
       <button class="form__button">{{ modeTitle }}</button>
@@ -51,7 +51,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations("user", ["SET_USER", "UPDATE_AUHT_URL"]),
+    ...mapMutations("user", ["SET_AUTH_DATA", "UPDATE_AUHT_URL"]),
     ...mapActions("user", ["authorize"]),
     toggleAuthMode() {
       this.mode === 'sign-in' ? (this.mode = 'sign-up') : (this.mode = 'sign-in');

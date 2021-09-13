@@ -9,10 +9,12 @@
           <NuxtLink class="header__link" to="/about">About</NuxtLink>
         </li>
         <li v-if="isAuth" class="header__item">
-          <NuxtLink class="header__link" to="/posts/own">My posts</NuxtLink>
+          <NuxtLink class="header__link" :to="`/${user.id}/posts`"
+            >My posts</NuxtLink
+          >
         </li>
         <li v-if="isAuth" class="header__item">
-          <NuxtLink class="header__link" to="/posts/favourites"
+          <NuxtLink class="header__link" :to="`/${user.id}/favourites`"
             >Favourites</NuxtLink
           >
         </li>
@@ -24,8 +26,7 @@
         <li v-else class="header__item header__user">
           <ul class="header__user-menu">
             <li class="header__item header__user-item">
-              <!-- todo link should be to /{userId}/settings -->
-              <NuxtLink class="header__link" to="/settings">Settings</NuxtLink>
+              <NuxtLink class="header__link" :to="`/${user.id}/settings`">Settings</NuxtLink>
             </li>
             <li class="header__item header__user-item">
               <a class="header__link" @click="onLogout">Logout</a>
@@ -40,19 +41,20 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapState, mapActions } from "vuex";
 export default {
   name: "TheHeader",
   computed: {
-    ...mapGetters("user", ["isAuth", "user"]),
+    ...mapGetters("user", ["isAuth"]),
+    ...mapState("user", ["user"]),
   },
   methods: {
     ...mapActions("user", ["logout"]),
     onLogout() {
       this.logout();
-      this.$router.push("/login")
-    }
-  }
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
 

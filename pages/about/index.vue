@@ -1,13 +1,13 @@
 <template>
   <main class="layout__main posts">
     <h1 class="layout__title">About the project</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    <p class="about__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
       Eveniet, ipsa sequi. Ducimus provident, nostrum, enim quam recusandae veniam ullam autem et non adipisci quod, 
       modi magni? Quod ducimus sed deleniti!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    <p class="about__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
       Eveniet, ipsa sequi. Ducimus provident, nostrum, enim quam recusandae veniam ullam autem et non adipisci quod, 
       modi magni? Quod ducimus sed deleniti!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    <p class="about__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
       Eveniet, ipsa sequi. Ducimus provident, nostrum, enim quam recusandae veniam ullam autem et non adipisci quod, 
       modi magni? Quod ducimus sed deleniti!</p>
   </main>
@@ -18,3 +18,9 @@ export default {
   layout: "short"
 }
 </script>
+
+<style lang="scss" scoped>
+.about__text {
+  text-align: center;
+}
+</style>
