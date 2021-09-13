@@ -2,6 +2,7 @@
 export default class BasePost {
   id = null;
   author = {
+    id: null,
     avatar: "",
     name: ""
   };

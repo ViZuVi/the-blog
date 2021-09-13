@@ -17,7 +17,11 @@ export const mutations = {
     state[index] = editingPost;
   },
   DELETE_POST(state, postId) {
-
+    const post = state.posts.find(post => post.id === postId);
+    const index = state.posts.indexOf(post);
+    if (index > -1) {
+      array.splice(index, 1);
+    }
   },
 };
 
@@ -44,14 +48,16 @@ export const actions = {
     const fakePost = {
       ...post,
       img: fakeImg,
-      date: new Date(),
     };
     axios.post("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/posts.json?auth=" + rootState.user.token, fakePost, { headers: { 'Content-Type': 'multipart/form-data' } })
       .then((res) => commit("ADD_POST", { ...fakePost, id: res.data.name }))
       .catch((err) => console.error(err));
-  }
+  },
+  deletePost() {},
+  editPost() {},
 };
 
 export const getters = {
   loadedPosts: (state) => state.posts,
+  userPosts: (state) => state.posts.filter(post => post.author.id === state.user.user.id),
 };
