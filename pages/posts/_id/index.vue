@@ -13,15 +13,16 @@
         <p class="post-details__author">
           Author: {{ selectedPost.author.name }}
         </p>
-        <button
+
+        <div class="post-details__edit-wrapper">
+          <p class="post-details__date">Created: {{ dateFormatted }}</p>
+          <button
             class="post-details__btn post-details__btn--add"
-            v-if="isAuthor"
+            v-if="isAuth"
             @click="handlePostToFavourites"
           >
             {{ isFavourite ? "&#10004;" : "&#10010;" }}
           </button>
-        <div class="post-details__edit-wrapper">
-          <p class="post-details__date">Created: {{ dateFormatted }}</p>
           <button
             class="post-details__btn post-details__btn--edit"
             v-if="isAuthor"
@@ -48,6 +49,7 @@ import { mapGetters, mapState, mapActions } from "vuex";
 export default {
   computed: {
     ...mapGetters(["loadedPosts"]),
+    ...mapGetters("user", ["isAuth"]),
     ...mapState("user", ["user"]),
     selectedPost() {
       return this.loadedPosts.find((post) => post.id === this.$route.params.id);
@@ -60,12 +62,14 @@ export default {
       return formatter.format(new Date(this.selectedPost.date));
     },
     isFavourite() {
-      return true
-    }
+      return true;
+    },
   },
   methods: {
     ...mapActions(["deletePost", "editPost"]),
-    handlePostDelete() {},
+    handlePostDelete() {
+      this.deletePost(this.$route.params.id).then(() => this.$router.push(`/`));
+    },
     handlePostEdit() {},
     handlePostToFavourites() {},
   },
@@ -115,6 +119,7 @@ export default {
 }
 
 .post-details__date,
+.post-details__btn--add,
 .post-details__btn--edit {
   margin-right: 12px;
 }
@@ -138,7 +143,6 @@ export default {
 }
 
 .post-details__btn--add {
-  font-size: 20px;
-  margin-right: auto;
+  font-size: 18px;
 }
 </style>

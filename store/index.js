@@ -20,7 +20,7 @@ export const mutations = {
     const post = state.posts.find(post => post.id === postId);
     const index = state.posts.indexOf(post);
     if (index > -1) {
-      array.splice(index, 1);
+      state.posts.splice(index, 1);
     }
   },
 };
@@ -53,8 +53,11 @@ export const actions = {
       .then((res) => commit("ADD_POST", { ...fakePost, id: res.data.name }))
       .catch((err) => console.error(err));
   },
-  deletePost() {},
-  editPost() {},
+  deletePost({ commit, rootState }, postId) {
+    axios.delete("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/posts/" + postId + ".json/?auth=" + rootState.user.token)
+      .then((_res) => commit("DELETE_POST", postId))
+  },
+  editPost() { },
 };
 
 export const getters = {
