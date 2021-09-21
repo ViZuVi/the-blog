@@ -70,7 +70,10 @@ export default {
     handlePostDelete() {
       this.deletePost(this.$route.params.id).then(() => this.$router.push(`/`));
     },
-    handlePostEdit() {},
+    handlePostEdit() {
+      this.$router.push(`/posts/${this.$route.params.id}/edit`)
+      // this.editPost(selectedPost)
+    },
     handlePostToFavourites() {},
   },
   head: {

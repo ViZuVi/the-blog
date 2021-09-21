@@ -57,7 +57,9 @@ export const actions = {
     axios.delete("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/posts/" + postId + ".json/?auth=" + rootState.user.token)
       .then((_res) => commit("DELETE_POST", postId))
   },
-  editPost() { },
+  editPost({ commit, rootState }, post) {
+    commit("EDIT_POST", post)
+  },
 };
 
 export const getters = {

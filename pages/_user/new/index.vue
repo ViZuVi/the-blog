@@ -2,8 +2,8 @@
   <main class="layout__main new-post">
     <PostFormCreate
       formTitle="New post"
-      @create-post="createPost"
       :user="user"
+      @create-post="createPost"
     />
   </main>
 </template>
