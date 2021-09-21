@@ -21,9 +21,6 @@ export default {
   computed: {
     ...mapGetters(["userPosts"]),
   },
-  mounted() {
-    console.log(this.$route);
-  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="layout__title">{{ formTitle }}</h1>
-    <form class="form" @submit.prevent="createPost">
+    <form class="form" @submit.prevent="$emit('submit-form', editedPost)">
       <div class="form__control-wrapper">
         <label class="form__label" for="post-title">Title</label>
         <input
@@ -10,7 +10,7 @@
           type="text"
           placeholder="enter the post title"
           maxlength="50"
-          v-model="post.title"
+          v-model="editedPost.title"
         />
       </div>
       <div class="form__control-wrapper">
@@ -20,7 +20,7 @@
           class="form__input form__input--textarea"
           rows="10"
           minlength="300"
-          v-model="post.text"
+          v-model="editedPost.text"
         />
       </div>
       <div class="form__control-wrapper">
@@ -31,10 +31,10 @@
           type="file"
           accept=".jpg, .jpeg, .png"
           ref="img"
-          @change="post.img = $refs.img.files[0]"
+          @change="editedPost.img = $refs.img.files[0]"
         />
       </div>
-      <button class="form__button" type="submit">Create</button>
+      <button class="form__button" type="submit">{{ buttonLabel }}</button>
     </form>
   </div>
 </template>
@@ -46,35 +46,40 @@ export default {
     formTitle: {
       type: String,
       required: false,
-      default: "New post",
+      default: () => "New post",
     },
     user: {
       type: Object,
-      required: true,
-      default: {},
+      required: false,
+      default: () => {},
+    },
+    post: {
+      type: Object,
+      required: false,
+      default: () => {},
     },
   },
   data() {
     return {
-      post: {
+      editedPost: {
         title: "",
         text: "",
         img: "",
       },
     };
   },
-  methods: {
-    createPost() {
-      const createdPost = {
-        ...this.post,
-        date: new Date(),
-        author: {
-          id: this.user.id,
-          name: this.user.name,
-        },
-      };
-      this.$emit("create-post", createdPost);
+  computed: {
+    buttonLabel() {
+      const urlPathArr = this.$route.path.split("/");
+      return urlPathArr[urlPathArr.length - 1] === "edit"
+        ? "Save changes"
+        : "Create";
     },
+  },
+  created() {
+    if (this.post) {
+      this.editedPost = { ...this.post };
+    }
   },
 };
 </script>

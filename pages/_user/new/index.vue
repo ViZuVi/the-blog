@@ -3,7 +3,7 @@
     <PostFormCreate
       formTitle="New post"
       :user="user"
-      @create-post="createPost"
+      @submit-form="createPost"
     />
   </main>
 </template>
