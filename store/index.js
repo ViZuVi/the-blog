@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const state = () => ({
   posts: [],
+  favouritePosts: [],
   tags: ["travels", "beauty & style", "science", "politics", "arts", "economics", "sport", "nature", "other"],
 })
 
@@ -22,6 +23,15 @@ export const mutations = {
     if (index > -1) {
       state.posts.splice(index, 1);
     }
+  },
+  SET_FAVOURITES(state, posts) {
+    state.favouritePosts = posts;
+  },
+  ADD_TO_FAVOURITES(state, post) {
+    state.favouritePosts.push(post)
+  },
+  REMOVE_FROM_FAVOURITES(state, post) {
+    state.favouritePosts.filter(el => el.id === post.id)
   },
 };
 
@@ -57,12 +67,36 @@ export const actions = {
   deletePost({ commit, rootState }, postId) {
     axios.delete("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/posts/" + postId + ".json/?auth=" + rootState.user.token)
       .then((_res) => commit("DELETE_POST", postId))
+      .catch((err) => console.error(err));
   },
   editPost({ commit, rootState }, post) {
     // TODO: display new data on main page after updating post
     axios.put("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/posts/" + post.id + ".json/?auth=" + rootState.user.token, post)
-    .then((_res) => commit("EDIT_POST", post))
+      .then((_res) => commit("EDIT_POST", post))
+      .catch((err) => console.error(err));
   },
+  fetchFavourites({ commit, rootState }) {
+    axios.get("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/" + rootState.user.user.id + "/favourites.json?auth=" + rootState.user.token)
+      .then((res => {
+        const favouritesArr = [];
+        for (const key in res.data) {
+          // TODO: removing from favourites is not working
+          favouritesArr.push({ ...res.data[key], favouriteId: key });
+        };
+        commit("SET_FAVOURITES", favouritesArr);
+      }))
+      .catch((err) => console.error(err));
+  },
+  addToFavourites({ commit, rootState }, post) {
+    axios.post("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/" + rootState.user.user.id + "/favourites.json?auth=" + rootState.user.token, post)
+      .then(() => commit("ADD_TO_FAVOURITES", post))
+      .catch((err) => console.error(err));
+  },
+  removeFromFavourites({ commit, rootState }, post) {
+    axios.delete("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/" + rootState.user.user.id + "/favourites/" + post.favouriteId + ".json?auth=" + rootState.user.token)
+      .then(() => commit("REMOVE_FROM_FAVOURITES", post))
+      .catch((err) => console.error(err));
+  }
 };
 
 export const getters = {

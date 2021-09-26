@@ -19,7 +19,7 @@
           <button
             class="post-details__btn post-details__btn--add"
             v-if="isAuth"
-            @click="handlePostToFavourites"
+            @click="toggleFavourites(selectedPost)"
           >
             {{ isFavourite ? "&#10004;" : "&#10010;" }}
           </button>
@@ -51,6 +51,7 @@ export default {
     ...mapGetters(["loadedPosts"]),
     ...mapGetters("user", ["isAuth"]),
     ...mapState("user", ["user"]),
+    ...mapState(["favouritePosts"]),
     selectedPost() {
       return this.loadedPosts.find((post) => post.id === this.$route.params.id);
     },
@@ -62,19 +63,30 @@ export default {
       return formatter.format(new Date(this.selectedPost.date));
     },
     isFavourite() {
-      return true;
+      // TODO: new store for selected post and is it favourite
+      return !!this.favouritePosts.find(
+        (post) => post.id === this.selectedPost.id
+      );
     },
   },
   methods: {
-    ...mapActions(["deletePost", "editPost"]),
+    ...mapActions([
+      "deletePost",
+      "editPost",
+      "addToFavourites",
+      "removeFromFavourites",
+    ]),
     handlePostDelete() {
       this.deletePost(this.$route.params.id).then(() => this.$router.push(`/`));
     },
     handlePostEdit() {
-      this.$router.push(`/posts/${this.$route.params.id}/edit`)
-      // this.editPost(selectedPost)
+      this.$router.push(`/posts/${this.$route.params.id}/edit`);
     },
-    handlePostToFavourites() {},
+    toggleFavourites(post) {
+      this.isFavourite
+        ? this.removeFromFavourites(post)
+        : this.addToFavourites(post);
+    },
   },
   head: {
     title: "A blog post",
