@@ -23,6 +23,7 @@ module.exports = {
   modules: [],
   buildModules: [
     '@nuxtjs/style-resources',
+    '@nuxtjs/vuetify',
   ],
   styleResources: {
     scss: [

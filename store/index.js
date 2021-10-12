@@ -68,6 +68,7 @@ export const actions = {
     axios.delete("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/posts/" + postId + ".json/?auth=" + rootState.user.token)
       .then((_res) => commit("DELETE_POST", postId))
       .catch((err) => console.error(err));
+    // TODO: delete also from favourites if is there
   },
   editPost({ commit, rootState }, post) {
     // TODO: display new data on main page after updating post
@@ -93,7 +94,7 @@ export const actions = {
       .catch((err) => console.error(err));
   },
   removeFromFavourites({ commit, rootState }, post) {
-    axios.delete("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/" + rootState.user.user.id + "/favourites/" + post.favouriteId + ".json?auth=" + rootState.user.token)
+    axios.delete("https://nuxt-blog-a7909-default-rtdb.firebaseio.com/" + rootState.user.user.id + "/favourites/" + post.id + ".json?auth=" + rootState.user.token)
       .then(() => commit("REMOVE_FROM_FAVOURITES", post))
       .catch((err) => console.error(err));
   }
